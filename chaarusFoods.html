@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaaru's Foods</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            raleway: ['Raleway', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-pink-100 
+            font-raleway">
+  <header class="shadow 
+                py-5 
+                px-5">
+    <div class="container   
+                mx-auto 
+                flex 
+                justify-between 
+                items-center">
+      <h1 class="text-2xl 
+                font-bold 
+                text-pink-500 
+                px-10">
+                Chaaru's Foods</h1>
+      <i class="fa-solid 
+                fa-bars 
+                block 
+                md:hidden 
+                text-2xl 
+                text-pink-500 
+                cursor-pointer 
+                px-10"></i>
+      <ul class="hidden 
+                md:flex 
+                space-x-4 
+                px-10">
+        <li class="font-semibold 
+                    text-xl
+                    text-pink-500 
+                    hover:text-pink-700 
+                    hover:scale-110 
+                    transition-all 
+                    duration-300 
+                    px-1"><a href="#">
+                    Home</a>
+        </li>
+        <li class="font-semibold 
+                    text-xl
+                    text-pink-500 
+                    hover:text-pink-700 
+                    hover:scale-110 
+                    transition-all 
+                    duration-300 
+                    px-1"><a href="#">
+                    Products</a>
+        </li>
+        <li class="font-semibold 
+        text-xl
+         text-pink-500 
+         hover:text-pink-700 
+         hover:scale-110 
+         transition-all 
+         duration-300 
+         px-1"><a href="#">
+            Contact</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</body>
+</html>
