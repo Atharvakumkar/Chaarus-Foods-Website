@@ -4,9 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chaaru's Foods</title>
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
       theme: {
@@ -20,65 +28,35 @@
   </script>
 </head>
 
-<body class="bg-pink-100 
-            font-raleway">
-  <header class="shadow 
-                py-5 
-                px-5">
-    <div class="container   
-                mx-auto 
-                flex 
-                justify-between 
-                items-center">
-      <h1 class="text-2xl 
-                font-bold 
-                text-pink-500 
-                px-10">
-                Chaaru's Foods</h1>
-      <i class="fa-solid 
-                fa-bars 
-                block 
-                md:hidden 
-                text-2xl 
-                text-pink-500 
-                cursor-pointer 
-                px-10"></i>
-      <ul class="hidden 
-                md:flex 
-                space-x-4 
-                px-10">
-        <li class="font-semibold 
-                    text-xl
-                    text-pink-500 
-                    hover:text-pink-700 
-                    hover:scale-110 
-                    transition-all 
-                    duration-300 
-                    px-1"><a href="#">
-                    Home</a>
-        </li>
-        <li class="font-semibold 
-                    text-xl
-                    text-pink-500 
-                    hover:text-pink-700 
-                    hover:scale-110 
-                    transition-all 
-                    duration-300 
-                    px-1"><a href="#">
-                    Products</a>
-        </li>
-        <li class="font-semibold 
-        text-xl
-         text-pink-500 
-         hover:text-pink-700 
-         hover:scale-110 
-         transition-all 
-         duration-300 
-         px-1"><a href="#">
-            Contact</a>
-        </li>
+<body class="bg-pink-100 font-raleway">
+
+  <!-- Header -->
+  <header class="shadow py-5 px-5">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <h1 class="text-2xl font-bold text-pink-500 px-2 md:px-10">
+        Chaaru's Foods
+      </h1>
+
+      <!-- Hamburger Icon -->
+      <i class="fa-solid fa-bars block md:hidden text-2xl text-pink-500 cursor-pointer px-2" onclick="toggleMenu()"></i>
+
+      <!-- Navigation Links (desktop + mobile dropdown) -->
+      <ul id="mobileMenu" class="hidden absolute top-20 left-0 w-full bg-pink-100 flex-col items-center space-y-4 py-4 shadow md:static md:flex md:flex-row md:space-y-0 md:space-x-6 md:bg-transparent md:shadow-none md:py-0 md:px-10">
+        <li><a href="#" class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300">Home</a></li>
+        <li><a href="#" class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300">Products</a></li>
+        <li><a href="#" class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300">Contact</a></li>
       </ul>
     </div>
   </header>
+
+  <!-- Toggle Script -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+
 </body>
 </html>
