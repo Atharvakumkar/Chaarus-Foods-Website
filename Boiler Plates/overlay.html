@@ -36,12 +36,20 @@
     </div>
   </header>
   
-  <section class="container mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <!-- Left side - Image occupying full div -->
-      <div class="h-full">
-        <img src="assets\homepage3.png" loading="lazy" alt="Chaaru's Foods" 
-             class="w-full h-full object-cover shadow-2xl" />
+  <section class="container mx-auto px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[400px]">
+      <!-- Left side - Image with text overlay -->
+      <div class="h-full relative">
+        <img src="assets\Untitled design.png" loading="lazy" alt="Chaaru's Foods" 
+             class="w-full h-full object-cover rounded-2xl shadow-2xl" />
+        
+        <!-- Text Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-2xl flex items-center justify-center">
+          <div class="text-center text-white px-4">
+            <h3 class="text-3xl font-bold mb-2">Fresh & Delicious</h3>
+            <p class="text-lg">Made with love, served with care</p>
+          </div>
+        </div>
       </div>
       <!-- Right side - Text content -->
       <div class="text-center md:text-left">
