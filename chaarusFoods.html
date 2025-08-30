@@ -23,33 +23,100 @@
 </head>
 
 <body class="bg-pink-100 font-raleway">
-  <header class="shadow py-5 px-5">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-pink-500">
-        Chaaru's Foods</h1>
-      <i class="fa-solid fa-bars block md:hidden text-2xl text-pink-500 cursor-pointer"></i>
-      <ul class="hidden md:flex space-x-4">
-        <li class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300 px-1"><a href="#">Home</a></li>
-        <li class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300 px-1"><a href="#">Products</a></li>
-        <li class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300 px-1"><a href="#">Contact</a></li>
-      </ul>
+  <header class="shadow py-5 px-5 relative z-20 bg-pink-100">
+    <div class="container mx-auto">
+      
+      <!-- Mobile Header Layout -->
+      <div class="flex md:hidden justify-between items-center">
+        <!-- Logo for Mobile -->
+        <h1 class="text-2xl font-bold text-pink-500">
+          Chaaru's Foods
+        </h1>
+        
+        <!-- Hamburger Icon -->
+        <i class="fa-solid fa-bars text-2xl text-pink-500 cursor-pointer px-2" onclick="toggleSidebar()"></i>
+      </div>
+
+      <!-- Desktop Menu Layout -->
+      <div class="hidden md:flex justify-center items-center">
+        <ul class="flex space-x-6 items-center">
+          <li><a href="#" class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300">Home</a></li>
+          <li><a href="#" class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300">About Us</a></li>
+          <li>
+            <h1 class="text-2xl font-bold text-pink-500 px-10">
+              Chaaru's Foods
+            </h1>
+          </li>
+          <li><a href="#" class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300">Products</a></li>
+          <li><a href="#" class="font-semibold text-xl text-pink-500 hover:text-pink-700 hover:scale-110 transition-all duration-300">Contact</a></li>
+        </ul>
+      </div>
+      
     </div>
   </header>
+
+  <!-- Mobile Sidebar -->
+  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-pink-100 shadow-lg transform -translate-x-full transition-transform duration-300 z-40 md:hidden">
+    <div class="flex justify-between items-center p-5 border-b">
+      <h2 class="text-xl font-bold text-pink-600">Menu</h2>
+      <i class="fa-solid fa-times text-2xl text-pink-600 cursor-pointer" onclick="toggleSidebar()"></i>
+    </div>
+    <ul class="flex flex-col space-y-6 p-6">
+      <li><a href="#" class="text-lg text-pink-500 font-semibold hover:text-pink-700">Home</a></li>
+      <li><a href="#" class="text-lg text-pink-500 font-semibold hover:text-pink-700">About Us</a></li>
+      <li><a href="#" class="text-lg text-pink-500 font-semibold hover:text-pink-700">Products</a></li>
+      <li><a href="#" class="text-lg text-pink-500 font-semibold hover:text-pink-700">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Backdrop -->
+  <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden" onclick="toggleSidebar()"></div>
+
+  <!-- Toggle Sidebar Script -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('backdrop');
+      const body = document.body;
+
+      const isOpen = !sidebar.classList.contains('-translate-x-full');
+
+      if (isOpen) {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+        body.classList.remove('no-scroll');
+      } else {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+        body.classList.add('no-scroll');
+      }
+    }
+  </script>
   
-  <section class="container mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <!-- Left side - Image occupying full div -->
-      <div class="h-full flex justify-end">
+  <!-- Hero Section -->
+  <section class="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen bg-cover bg-center bg-no-repeat" 
+           style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/homeimage1.jpg'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="text-center text-white px-4 max-w-4xl mx-auto">
+        <!--<h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-raleway mb-3 sm:mb-4 leading-tight">
+          HOMEMADE DELIGHTS<br>
+          <span class="text-pink-300">& TREATS</span>
+        </h1> -->
         <img src="assets/logo.png" loading="lazy" alt="Chaaru's Foods" 
-             class="w-[400px] h-[400px]" />
-      </div>
-      <!-- Right side - Text content -->
-      <div class="text-center md:text-left">
-        <h2 class="font-raleway text-4xl font-bold text-pink-500 py-5">Traditional Flavors, Authentic Taste</h2>
-        <h2 class="font-raleway text-4xl font-bold text-pink-500">Made at Home, with Love.</h2>
+             class="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] xl:w-[400px] xl:h-[400px] mx-auto" />
+        <p class="text-sm sm:text-base md:text-lg lg:text-xl text-white font-raleway font-semibold mb-4 sm:mb-6 md:mb-8">Traditional Recipes, Made with <span class="text-pink-200"> Love</span></p>
+        
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+          <button class="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-raleway font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 hover:scale-105 text-sm sm:text-base">
+            OUR PRODUCTS
+          </button>
+        </div>
       </div>
     </div>
-     
+  </section>
+
+  <!-- About Section -->
+  <section class="container mx-auto py-16"> 
     <!--<div class="flex justify-center mt-8">
       <div class="flex flex-wrap gap-4">
         <button class="bg-zinc-900 text-white font-medium py-2 px-6 rounded hover:bg-zinc-800 transition-colors">Button 1</button>
@@ -85,8 +152,86 @@
     </div>
   </section>
   
-  <footer class="bg-pink-400 mt-16">
-    <div class="bg-pink-400">
+  <!--Footer -->
+  <footer class="bg-pink-600 mt-16">
+    <div class="container mx-auto px-6 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- About Chaaru's Foods -->
+        <div>
+          <h2 class="font-raleway text-3xl text-pink-100 font-bold mb-4">Chaaru's Foods</h2>
+          <div class="space-y-2">
+            <p class="font-raleway text-pink-100 font-semibold leading-relaxed">
+              B/004, Madhupushpa Arcade,<br>
+              Near Girijamata Mandir,<br>
+              Dombivali West - 421 202
+            </p>
+            <div class="mt-4 space-y-1">
+              <p class="font-manrope text-pink-100 font-semibold">
+                <i class="fas fa-phone mr-2"></i>+91-8652530914
+              </p>
+              <p class="font-manrope text-pink-100 font-semibold">
+                <i class="fas fa-phone mr-2"></i>+91-7045727768
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Navigation towards different pages -->
+        <div>
+          <h3 class="font-raleway text-2xl text-pink-100 font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="chaarusFoods.html" class="text-pink-100 font-raleway font-semibold hover:text-pink-200 hover:scale-105 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Home
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-pink-100 font-raleway font-semibold hover:text-pink-200 hover:scale-105 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Products
+              </a>
+            </li>
+            <li>
+              <a href="contactpage.html" class="text-pink-100 font-raleway font-semibold hover:text-pink-200 hover:scale-105 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Quick links -->
+        <div>
+          <h3 class="font-raleway text-2xl text-pink-100 font-bold mb-4">Connect With Us</h3>
+          <div class="space-y-4">
+            <p class="text-pink-100 font-raleway font-semibold">
+              Follow us for updates and delicious recipes!
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-pink-100 hover:scale-110 transition-all duration-300">
+                <i class="fab fa-youtube text-2xl"></i>
+              </a>
+              <a href="#" class="text-pink-100 hover:scale-110 transition-all duration-300">
+                <i class="fab fa-instagram text-2xl"></i>
+              </a>
+              <a href="#" class="text-pink-100 hover:scale-110 transition-all duration-300">
+                <i class="fab fa-whatsapp text-2xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Copyright Section -->
+    <div class="bg-pink-700 py-4">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-center items-center">
+          <p class="text-pink-100 font-raleway text-sm">
+            © 2025 Chaaru's Foods. All rights reserved.
+          </p>
+        </div>
+      </div>
     </div>
   </footer>
 </body>
