@@ -36,6 +36,31 @@
     body.no-scroll {
       overflow: hidden;
     }
+    
+    /* Dropdown animation */
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    /* Mobile dropdown animation */
+    .mobile-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .mobile-dropdown.open {
+      max-height: 200px;
+    }
   </style>
 </head>
 
@@ -65,7 +90,22 @@
               Chaaru's Foods
             </h1>
           </li>
-          <li><a href="#" class="font-semibold text-xl text-rose-800 hover:text-pink-500 hover:scale-110 transition-all duration-300">Products</a></li>
+          <!-- Products Dropdown -->
+          <li class="relative dropdown">
+            <a href="#" class="font-semibold text-xl text-rose-800 hover:text-pink-500 flex items-center gap-1">
+              Products
+              <i class="fa-solid fa-chevron-down text-sm"></i>
+            </a>
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-rose-200">
+              <ul class="py-2">
+                <li><a href="#" class="block px-4 py-3 text-rose-700 hover:bg-pink-50 hover:text-rose-800 transition-all duration-200 font-semibold">Traditionals</a></li>
+                <li><a href="products__cakes.html" class="block px-4 py-3 text-rose-700 hover:bg-pink-50 hover:text-rose-800 transition-all duration-200 font-semibold">Cakes</a></li>
+                <li><a href="#" class="block px-4 py-3 text-rose-700 hover:bg-pink-50 hover:text-rose-800 transition-all duration-200 font-semibold">Diwali Faral</a></li>
+                <li><a href="#" class="block px-4 py-3 text-rose-700 hover:bg-pink-50 hover:text-rose-800 transition-all duration-200 font-semibold">Biryani</a></li>
+              </ul>
+            </div>
+          </li>
           <li><a href="contactpage.html" class="font-semibold text-xl text-rose-800 hover:text-pink-500 hover:scale-110 transition-all duration-300">Contact</a></li>
         </ul>
       </div>
@@ -82,7 +122,21 @@
     <ul class="flex flex-col space-y-6 p-6">
       <li><a href="#" class="text-lg text-rose-800 font-semibold hover:text-pink-500 transition-colors duration-300">Home</a></li>
       <li><a href="#" class="text-lg text-rose-800 font-semibold hover:text-pink-500 transition-colors duration-300">About Us</a></li>
-      <li><a href="#" class="text-lg text-rose-800 font-semibold hover:text-pink-500 transition-colors duration-300">Products</a></li>
+      <!-- Mobile Products with Dropdown -->
+      <li>
+        <div class="text-lg text-rose-800 font-semibold cursor-pointer flex items-center justify-between" onclick="toggleMobileDropdown()">
+          <span class="hover:text-pink-500 transition-colors duration-300">Products</span>
+          <i id="mobile-arrow" class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </div>
+        <div id="mobile-products-dropdown" class="mobile-dropdown ml-4 mt-2">
+          <ul class="space-y-2">
+            <li><a href="#" class="block text-base text-rose-600 hover:text-pink-500 transition-colors duration-300 font-semibold">Traditionals</a></li>
+            <li><a href="products__cakes.html" class="block text-base text-pink-500 hover:text-pink-500 transition-colors duration-300 font-semibold">Cakes</a></li>
+            <li><a href="#" class="block text-base text-rose-600 hover:text-pink-500 transition-colors duration-300 font-semibold">Diwali Faral</a></li>
+            <li><a href="#" class="block text-base text-rose-600 hover:text-pink-500 transition-colors duration-300 font-semibold">Biryani</a></li>
+          </ul>
+        </div>
+      </li>
       <li><a href="#" class="text-lg text-rose-800 font-semibold hover:text-pink-500 transition-colors duration-300">Contact</a></li>
     </ul>
   </div>
@@ -90,7 +144,7 @@
   <!-- Backdrop -->
   <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden" onclick="toggleSidebar()"></div>
 
-  <!-- Toggle Sidebar Script -->
+  <!-- Scripts -->
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
@@ -108,6 +162,14 @@
         backdrop.classList.remove('hidden');
         body.classList.add('no-scroll');
       }
+    }
+    
+    function toggleMobileDropdown() {
+      const dropdown = document.getElementById('mobile-products-dropdown');
+      const arrow = document.getElementById('mobile-arrow');
+      
+      dropdown.classList.toggle('open');
+      arrow.classList.toggle('rotate-180');
     }
   </script>
 
