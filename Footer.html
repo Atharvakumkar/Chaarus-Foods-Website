@@ -8,84 +8,214 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            raleway: ['Raleway', 'sans-serif'],
-            dancing: ['Dancing Script', 'cursive'],
-            manrope: ['Manrope', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
+  <style>
+    .font-manrope {
+      font-family: 'Manrope', sans-serif;
+    }
+    
+    body.no-scroll {
+      overflow: hidden;
+    }
+    
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .mobile-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .mobile-dropdown.open {
+      max-height: 200px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      background-size: 1000px 100%;
+      animation: shimmer 2s infinite;
+    }
+
+    .cake-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cake-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .price-badge {
+      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      box-shadow: 0 10px 30px rgba(236,72,153,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .price-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(236,72,153,0.6);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-golden {
+      color: #DFBD69;
+    }
+
+    .bg-golden {
+      color: #DFBD69;
+    }
+
+    .text-gradient-golden {
+      background: linear-gradient(135deg, #DFBD69 0%, #C9A54F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cake-image-container {
+      position: relative;
+      overflow: visible;
+    }
+
+    .cake-image-container::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 30px;
+      background: radial-gradient(ellipse, rgba(236,72,153,0.3) 0%, transparent 70%);
+      filter: blur(15px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hover-lift {
+      transition: all 0.4s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-10px);
+    }
+  </style>
 </head>
 
 <body class="bg-pink-100 font-raleway">
   <!--Footer -->
-  <footer class="bg-pink-600 mt-16">
+    <footer class="bg-gradient-to-br from-yellow-600 via-yellow-500 to-amber-600 dark:from-yellow-600 dark:via-yellow-500 dark:to-amber-600">
     <div class="container mx-auto px-6 py-10">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- About Chaaru's Foods -->
         <div>
-          <h2 class="font-raleway text-3xl text-pink-100 font-bold mb-4">Chaaru's Foods</h2>
+          <h2 class="font-raleway text-3xl text-white font-bold mb-4 drop-shadow-lg">Chaaru's Foods</h2>
           <div class="space-y-2">
-            <p class="font-raleway text-pink-100 font-semibold leading-relaxed">
+            <p class="font-raleway text-pink-50 dark:text-white font-semibold leading-relaxed">
               B/004, Madhupushpa Arcade,<br>
               Near Girijamata Mandir,<br>
               Dombivali West - 421 202
             </p>
             <div class="mt-4 space-y-1">
-              <p class="font-manrope text-pink-100 font-semibold">
+              <p class="font-manrope text-pink-50 dark:text-white font-semibold hover:text-white transition-colors">
                 <i class="fas fa-phone mr-2"></i>+91-8652530914
               </p>
-              <p class="font-manrope text-pink-100 font-semibold">
+              <p class="font-manrope text-pink-50 dark:text-white font-semibold hover:text-white transition-colors">
                 <i class="fas fa-phone mr-2"></i>+91-7045727768
               </p>
             </div>
           </div>
         </div>
         
-        <!-- Navigation towards different pages -->
         <div>
-          <h3 class="font-raleway text-2xl text-pink-100 font-bold mb-4">Quick Links</h3>
+          <h3 class="font-raleway text-2xl text-white font-bold mb-4 drop-shadow-lg">Quick Links</h3>
           <ul class="space-y-2">
             <li>
-              <a href="chaarusFoods.html" class="text-pink-100 font-raleway font-semibold hover:text-pink-200 hover:scale-105 transition-all duration-300 inline-block">
+              <a href="chaarusFoods.html" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
                 <i class="fas fa-chevron-right mr-2 text-sm"></i>Home
               </a>
             </li>
             <li>
-              <a href="#" class="text-pink-100 font-raleway font-semibold hover:text-pink-200 hover:scale-105 transition-all duration-300 inline-block">
+              <a href="#" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
                 <i class="fas fa-chevron-right mr-2 text-sm"></i>Products
               </a>
             </li>
             <li>
-              <a href="contactpage.html" class="text-pink-100 font-raleway font-semibold hover:text-pink-200 hover:scale-105 transition-all duration-300 inline-block">
+              <a href="contactpage.html" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
                 <i class="fas fa-chevron-right mr-2 text-sm"></i>Contact
               </a>
             </li>
           </ul>
         </div>
         
-        <!-- Quick links -->
         <div>
-          <h3 class="font-raleway text-2xl text-pink-100 font-bold mb-4">Connect With Us</h3>
+          <h3 class="font-raleway text-2xl text-white font-bold mb-4 drop-shadow-lg">Connect With Us</h3>
           <div class="space-y-4">
-            <p class="text-pink-100 font-raleway font-semibold">
+            <p class="text-pink-50 dark:text-white font-raleway font-semibold">
               Follow us for updates and delicious recipes!
             </p>
             <div class="flex space-x-4">
-              <a href="#" class="text-pink-100 hover:scale-110 transition-all duration-300">
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
                 <i class="fab fa-youtube text-2xl"></i>
               </a>
-              <a href="#" class="text-pink-100 hover:scale-110 transition-all duration-300">
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
                 <i class="fab fa-instagram text-2xl"></i>
               </a>
-              <a href="#" class="text-pink-100 hover:scale-110 transition-all duration-300">
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
                 <i class="fab fa-whatsapp text-2xl"></i>
               </a>
             </div>
@@ -95,11 +225,10 @@
       </div>
     </div>
     
-    <!-- Copyright Section -->
-    <div class="bg-pink-700 py-4">
+    <div class="bg-gradient-to-br from-yellow-600 via-yellow-500 to-amber-600 dark:from-yellow-600 dark:via-yellow-500 dark:to-amber-600 bg-opacity-50 py-4">
       <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-center items-center">
-          <p class="text-pink-100 font-raleway text-sm">
+          <p class="text-pink-50 dark:text-white font-raleway text-sm">
             © 2025 Chaaru's Foods. All rights reserved.
           </p>
         </div>
