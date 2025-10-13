@@ -4,99 +4,232 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chaaru's Foods</title>
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind Config -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            raleway: ['Raleway', 'sans-serif'],
-            manrope: ['Manrope', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
   <style>
     .font-manrope {
       font-family: 'Manrope', sans-serif;
     }
-    /* Prevent body scroll when sidebar is open */
+    
     body.no-scroll {
       overflow: hidden;
+    }
+    
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .mobile-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .mobile-dropdown.open {
+      max-height: 200px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      background-size: 1000px 100%;
+      animation: shimmer 2s infinite;
+    }
+
+    .cake-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cake-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .price-badge {
+      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      box-shadow: 0 10px 30px rgba(236,72,153,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .price-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(236,72,153,0.6);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-golden {
+      color: #DFBD69;
+    }
+
+    .bg-golden {
+      color: #DFBD69;
+    }
+
+    .text-gradient-golden {
+      background: linear-gradient(135deg, #DFBD69 0%, #C9A54F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cake-image-container {
+      position: relative;
+      overflow: visible;
+    }
+
+    .cake-image-container::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 30px;
+      background: radial-gradient(ellipse, rgba(236,72,153,0.3) 0%, transparent 70%);
+      filter: blur(15px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hover-lift {
+      transition: all 0.4s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-10px);
     }
   </style>
 </head>
 
-<body class="bg-rose-50 font-raleway">
-  <header class="shadow py-5 px-5 relative z-20 bg-pink-50 dark:bg-rose-950">
+<body class="bg-gradient-to-br from-white via-white to-yellow-50 dark:bg-zinc-900 font-raleway">
+  <header class="sticky top-0 shadow-lg py-5 px-5 z-50 bg-white backdrop-blur-md dark:bg-zinc-900">
     <div class="container mx-auto">
       
-      <!-- Mobile Header Layout -->
       <div class="flex md:hidden justify-between items-center">
-        <!-- Logo for Mobile -->
-        <h1 class="text-2xl font-bold text-rose-800">
+        <h1 class="text-2xl font-bold text-gradient-golden">
           Chaaru's Foods
         </h1>
-        
-        <!-- Hamburger Icon -->
-        <i class="fa-solid fa-bars text-2xl text-rose-800 cursor-pointer px-2" onclick="toggleSidebar()"></i>
+        <i class="fa-solid fa-bars text-2xl text-golden cursor-pointer px-2 hover:scale-110 transition-transform" onclick="toggleSidebar()" style="color: #DFBD69;"></i>
       </div>
 
-      <!-- Desktop Menu Layout -->
       <div class="hidden md:flex justify-center items-center">
         <ul class="flex space-x-6 items-center">
-          <li><a href="#" class="font-semibold text-xl text-rose-800 hover:text-pink-500 hover:scale-110 transition-all duration-300">Home</a></li>
-          <li><a href="#" class="font-semibold text-xl text-rose-800 hover:text-pink-500 hover:scale-110 transition-all duration-300">About Us</a></li>
+          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Home</a></li>
+          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">About Us</a></li>
           <li>
-            <h1 class="text-2xl font-bold text-rose-800 hover:text-pink-500 hover:scale-105 px-10 duration-300 transition-all">
+            <h1 class="text-3xl font-bold text-gradient-golden hover:scale-105 px-10 duration-300 transition-all">
               Chaaru's Foods
             </h1>
           </li>
-          <li><a href="#" class="font-semibold text-xl text-rose-800 hover:text-pink-500 hover:scale-110 transition-all duration-300">Products</a></li>
-          <li><a href="contactpage.html" class="font-semibold text-xl text-rose-800 hover:text-pink-500 hover:scale-110 transition-all duration-300">Contact</a></li>
+          <li class="relative dropdown">
+            <a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300 flex items-center gap-1" style="color: #DFBD69;">
+              Products
+              <i class="fa-solid fa-chevron-down text-sm"></i>
+            </a>
+            <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white dark:bg-zinc-700 rounded-xl shadow-2xl border-2  dark:border-zinc-600">
+              <ul class="py-2">
+                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Cakes</a></li>
+                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2 " style="color: #DFBD69;">Traditionals</a></li>
+                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Diwali Faral</a></li>
+                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Biryani</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="contactpage.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Contact</a></li>
         </ul>
       </div>
       
     </div>
   </header>
 
-  <!-- Mobile Sidebar -->
-  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-pink-50 shadow-lg transform -translate-x-full transition-transform duration-300 z-40 md:hidden">
-    <div class="flex justify-between items-center p-5 border-b border-rose-200">
-      <h2 class="text-xl font-bold text-rose-800">Menu</h2>
-      <i class="fa-solid fa-times text-2xl text-rose-800 cursor-pointer" onclick="toggleSidebar()"></i>
+  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-pink-50 to-rose-100 shadow-2xl transform -translate-x-full transition-transform duration-300 z-40 md:hidden dark:from-zinc-800 dark:to-zinc-800">
+    <div class="flex justify-between items-center p-5 border-b border-rose-200 dark:border-zinc-700">
+      <h2 class="text-xl font-bold text-gradient-golden">Menu</h2>
+      <i class="fa-solid fa-times text-2xl text-golden cursor-pointer hover:scale-110 transition-transform" onclick="toggleSidebar()" style="color: #DFBD69;"></i>
     </div>
     <ul class="flex flex-col space-y-6 p-6">
-      <li><a href="chaarusFoods.html" class="text-lg text-rose-800 font-semibold hover:text-pink-500 transition-colors duration-300">Home</a></li>
-      <li><a href="#" class="text-lg text-rose-800 font-semibold hover:text-pink-500 transition-colors duration-300">About Us</a></li>
-      <li><a href="#" class="text-lg text-rose-800 font-semibold hover:text-pink-500 transition-colors duration-300">Products</a></li>
-      <li><a href="#" class="text-lg text-rose-800 font-semibold hover:text-pink-500 transition-colors duration-300">Contact</a></li>
+      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Home</a></li>
+      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">About Us</a></li>
+      <li>
+        <div class="text-lg text-golden font-semibold cursor-pointer flex items-center justify-between" onclick="toggleMobileDropdown()" style="color: #DFBD69;">
+          <span class="hover:opacity-80 transition-colors duration-300">Products</span>
+          <i id="mobile-arrow" class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </div>
+        <div id="mobile-products-dropdown" class="mobile-dropdown ml-4 mt-2">
+          <ul class="space-y-2">
+            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Cakes</a></li>
+            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Traditionals</a></li>
+            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Diwali Faral</a></li>
+            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Biryani</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Contact</a></li>
     </ul>
   </div>
 
-  <!-- Backdrop -->
   <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden" onclick="toggleSidebar()"></div>
 
-  <!-- Toggle Sidebar Script -->
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       const backdrop = document.getElementById('backdrop');
       const body = document.body;
-
       const isOpen = !sidebar.classList.contains('-translate-x-full');
 
       if (isOpen) {
@@ -109,64 +242,71 @@
         body.classList.add('no-scroll');
       }
     }
+    
+    function toggleMobileDropdown() {
+      const dropdown = document.getElementById('mobile-products-dropdown');
+      const arrow = document.getElementById('mobile-arrow');
+      dropdown.classList.toggle('open');
+      arrow.classList.toggle('rotate-180');
+    }
   </script>
   
-  <section class="min-h-screen flex items-center justify-center px-4 py-8">
+  <section class="min-h-screen flex items-center justify-center px-4 py-8 dark:bg-zinc-900">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         <!-- Left Side - Contact Information -->
         <div class="order-2 lg:order-1">
-          <div class="bg-gradient-to-br from-rose-500 to-rose-600 rounded-3xl shadow-2xl p-8 lg:p-12">
+          <div class=" rounded-3xl shadow-2xl p-8 lg:p-12" style="background-color: #DFBD69;">
             <div class="mb-8">
-              <h1 class="font-raleway font-bold text-4xl lg:text-5xl text-rose-50 mb-2">Contact Us</h1>
-              <p class="text-pink-100 text-lg">We'd love to hear from you!</p>
+              <h1 class="font-raleway font-bold text-4xl lg:text-5xl text-white mb-2">Contact Us</h1>
+              <p class="text-white text-lg">We'd love to hear from you!</p>
             </div>
             
             <!-- Phone Numbers -->
             <a href="https://api.whatsapp.com/send/?phone=%2B918652530914&text&type=phone_number&app_absent=0" 
-               class="group flex items-center bg-pink-400 hover:bg-pink-300 border-2 border-pink-200 rounded-2xl p-4 mb-4 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <div class="bg-pink-50 rounded-full p-3 mr-4 group-hover:bg-white transition-colors duration-300">
-                <i class="fa-solid fa-phone text-2xl text-rose-500"></i>
+               class="group flex items-center bg-white border-2 border-white rounded-2xl p-4 mb-4 transition-all duration-300 hover:scale-105 hover:shadow-lg" style="color: #DFBD69;">
+              <div class="bg-golden rounded-full p-3 mr-4 group-hover:bg-white transition-colors duration-300" style="background-color: #DFBD69;">
+                <i class="fa-solid fa-phone text-2xl text-white"></i>
               </div>
               <div>
-                <h2 class="font-manrope font-bold text-2xl lg:text-3xl text-rose-50">+91-8652530914</h2>
-                <p class="text-pink-100 text-sm">Primary Contact</p>
+                <h2 class="font-manrope font-bold text-2xl lg:text-3xl text-golden" style="color: #DFBD69;">+91-8652530914</h2>
+                <p class="text-golden text-sm" style="color: #C9A54F;">Primary Contact</p>
               </div>
             </a>
             
             <a href="https://api.whatsapp.com/send/?phone=%2B917045727768&text&type=phone_number&app_absent=0" 
-               class="group flex items-center bg-pink-400 hover:bg-pink-300 border-2 border-pink-200 rounded-2xl p-4 mb-4 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <div class="bg-pink-50 rounded-full p-3 mr-4 group-hover:bg-white transition-colors duration-300">
-                <i class="fa-solid fa-phone text-2xl text-rose-500"></i>
+               class="group flex items-center bg-white hover:shadow-5xl border-2 border-white rounded-2xl p-4 mb-4 transition-all duration-300 hover:scale-105 hover:shadow-lg" style="color: #DFBD69;">
+              <div class="bg-golden rounded-full p-3 mr-4 group-hover:bg-white transition-colors duration-300" style="background-color: #DFBD69;">
+                <i class="fa-solid fa-phone text-2xl text-white"></i>
               </div>
               <div>
-                <h2 class="font-manrope font-bold text-2xl lg:text-3xl text-rose-50">+91-7045727768</h2>
-                <p class="text-pink-100 text-sm">Secondary Contact</p>
+                <h2 class="font-manrope font-bold text-2xl lg:text-3xl text-golden" style="color: #DFBD69;">+91-7045727768</h2>
+                <p class="text-golden text-sm" style="color: #C9A54F;">Secondary Contact</p>
               </div>
             </a>
             
             <!-- Instagram -->
             <a href="https://www.instagram.com/chaarus_foods/" 
-               class="group flex items-center bg-pink-400 hover:bg-pink-300 border-2 border-pink-200 rounded-2xl p-4 mb-4 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <div class="bg-pink-50 rounded-full p-3 mr-4 group-hover:bg-white transition-colors duration-300">
-                <i class="fa-brands fa-instagram text-2xl text-rose-500"></i>
+               class="group flex items-center bg-white hover:shadow-5xl border-2 border-white rounded-2xl p-4 mb-4 transition-all duration-300 hover:scale-105 hover:shadow-lg" style="color: #DFBD69;">
+              <div class="bg-golden rounded-full p-3 mr-4 group-hover:bg-white transition-colors duration-300" style="background-color: #DFBD69;">
+                <i class="fa-brands fa-instagram text-2xl text-white"></i>
               </div>
               <div>
-                <h2 class="font-manrope font-bold text-2xl lg:text-3xl text-rose-50">@chaarus_foods</h2>
-                <p class="text-pink-100 text-sm">Follow us on Instagram</p>
+                <h2 class="font-manrope font-bold text-2xl lg:text-3xl text-golden" style="color: #DFBD69;">@chaarus_foods</h2>
+                <p class="text-golden text-sm" style="color: #C9A54F;">Follow us on Instagram</p>
               </div>
             </a>
             
             <!-- Location -->
             <a href="https://share.google/GB9vishGVYR91IbN5" 
-               class="group flex items-center bg-pink-400 hover:bg-pink-300 border-2 border-pink-200 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <div class="bg-pink-50 rounded-full p-3 mr-4 group-hover:bg-white transition-colors duration-300">
-                <i class="fa-solid fa-location-dot text-2xl text-rose-500"></i>
+               class="group flex items-center bg-white hover:shadow-5xl border-2 border-white rounded-2xl p-4 mb-4 transition-all duration-300 hover:scale-105 hover:shadow-lg" style="color: #DFBD69;">
+              <div class="bg-golden rounded-full p-3 mr-4 group-hover:bg-white transition-colors duration-300" style="background-color: #DFBD69;">
+                <i class="fa-solid fa-location-dot text-2xl text-white"></i>
               </div>
               <div>
-                <h2 class="font-manrope font-bold text-2xl lg:text-3xl text-rose-50">Our Location</h2>
-                <p class="text-pink-100 text-sm">Find us on Google Maps</p>
+                <h2 class="font-manrope font-bold text-2xl lg:text-3xl text-golden" style="color: #DFBD69;">Our Location</h2>
+                <p class="text-golden text-sm" style="color: #C9A54F;">Find us on Google Maps</p>
               </div>
             </a>
           </div>
@@ -175,7 +315,7 @@
         <!-- Right Side - Image -->
         <div class="order-1 lg:order-2 flex justify-center">
           <div class="relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-rose-300 to-pink-400 rounded-3xl transform rotate-3 opacity-20"></div>
+            <div class="absolute inset-0 rounded-3xl transform rotate-3 opacity-40 dark:opacity-20" style="background-color: #DFBD69;"></div>
             <img src="assets/WhatsApp Image 2025-08-11 at 20.03.55_6709003d.jpg" 
                  loading="lazy" 
                  alt="Chaaru's Foods" 
@@ -186,6 +326,84 @@
       </div>
     </div>
   </section>
+
+  <footer class="bg-gradient-to-br from-yellow-600 via-yellow-500 to-amber-600 dark:from-yellow-600 dark:via-yellow-500 dark:to-amber-600">
+    <div class="container mx-auto px-6 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div>
+          <h2 class="font-raleway text-3xl text-white font-bold mb-4 drop-shadow-lg">Chaaru's Foods</h2>
+          <div class="space-y-2">
+            <p class="font-raleway text-pink-50 dark:text-white font-semibold leading-relaxed">
+              B/004, Madhupushpa Arcade,<br>
+              Near Girijamata Mandir,<br>
+              Dombivali West - 421 202
+            </p>
+            <div class="mt-4 space-y-1">
+              <p class="font-manrope text-pink-50 dark:text-white font-semibold hover:text-white transition-colors">
+                <i class="fas fa-phone mr-2"></i>+91-8652530914
+              </p>
+              <p class="font-manrope text-pink-50 dark:text-white font-semibold hover:text-white transition-colors">
+                <i class="fas fa-phone mr-2"></i>+91-7045727768
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="font-raleway text-2xl text-white font-bold mb-4 drop-shadow-lg">Quick Links</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="chaarusFoods.html" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Home
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Products
+              </a>
+            </li>
+            <li>
+              <a href="contactpage.html" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-raleway text-2xl text-white font-bold mb-4 drop-shadow-lg">Connect With Us</h3>
+          <div class="space-y-4">
+            <p class="text-pink-50 dark:text-white font-raleway font-semibold">
+              Follow us for updates and delicious recipes!
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
+                <i class="fab fa-youtube text-2xl"></i>
+              </a>
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
+                <i class="fab fa-instagram text-2xl"></i>
+              </a>
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
+                <i class="fab fa-whatsapp text-2xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="bg-gradient-to-br from-yellow-600 via-yellow-500 to-amber-600 dark:from-yellow-600 dark:via-yellow-500 dark:to-amber-600 bg-opacity-50 py-4">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-center items-center">
+          <p class="text-pink-50 dark:text-white font-raleway text-sm">
+            © 2025 Chaaru's Foods. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
