@@ -119,16 +119,10 @@
       overflow: visible;
     }
 
-    .cake-image-container::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 30px;
-      background: radial-gradient(ellipse, rgba(236,72,153,0.3) 0%, transparent 70%);
-      filter: blur(15px);
+    /* Added a safe white background behind PNG to avoid color bleed */
+    .cake-image-container img {
+      background-color: #ffffff;
+      display: block;
     }
 
     @keyframes fadeInUp {
@@ -255,7 +249,9 @@
     <div class="container mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-8">
         <div class="cake-image-container fade-in-up dark:bg-zinc-800 rounded-3xl p-8">
-          <img src="https://ik.imagekit.io/ChaarusFoods/blackForestCake.png?updatedAt=1762268890022" class="w-full h-auto drop-shadow-2xl bg-white dark:bg-zinc-800 rounded-2xl p-4" alt="Chocolate Cake">
+          <div class="relative bg-white dark:bg-zinc-800 rounded-2xl p-4 shadow-2xl">
+          <img src="https://ik.imagekit.io/ChaarusFoods/blackForestCake.png?updatedAt=1762268890022" class="w-full h-auto rounded-2xl" alt="Black Forest Cake">
+          </div>
         </div>
         <div class="space-y-4 md:space-y-4 fade-in-up bg-white dark:bg-zinc-800 rounded-3xl p-8">
           <h1 class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-golden leading-tight text-center lg:text-left" style="color: #DFBD69;">Black Forest Cake</h1>

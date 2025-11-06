@@ -114,21 +114,15 @@
       background-clip: text;
     }
 
-    .cake-image-container {
+     .cake-image-container {
       position: relative;
       overflow: visible;
     }
 
-    .cake-image-container::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 30px;
-      background: radial-gradient(ellipse, rgba(236,72,153,0.3) 0%, transparent 70%);
-      filter: blur(15px);
+    /* Added a safe white background behind PNG to avoid color bleed */
+    .cake-image-container img {
+      background-color: #ffffff;
+      display: block;
     }
 
     @keyframes fadeInUp {
