@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Traditionals - Chaaru's Foods</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    .font-manrope {
+      font-family: 'Manrope', sans-serif;
+    }
+    
+    body.no-scroll {
+      overflow: hidden;
+    }
+    
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .mobile-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .mobile-dropdown.open {
+      max-height: 200px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      background-size: 1000px 100%;
+      animation: shimmer 2s infinite;
+    }
+
+    .cake-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cake-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .price-badge {
+      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      box-shadow: 0 10px 30px rgba(236,72,153,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .price-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(236,72,153,0.6);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-golden {
+      color: #DFBD69;
+    }
+
+    .bg-golden {
+      color: #DFBD69;
+    }
+
+    .text-gradient-golden {
+      background: linear-gradient(135deg, #DFBD69 0%, #C9A54F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cake-image-container {
+      position: relative;
+      overflow: visible;
+    }
+
+    .cake-image-container::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 30px;
+      background: radial-gradient(ellipse, rgba(236,72,153,0.3) 0%, transparent 70%);
+      filter: blur(15px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hover-lift {
+      transition: all 0.4s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-10px);
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-white via-white to-yellow-50 dark:bg-zinc-900 font-raleway">
+  <header class="sticky top-0 shadow-lg py-5 px-5 z-50 bg-white dark:bg-zinc-800 backdrop-blur-md">
+    <div class="container mx-auto">
+      
+      <div class="flex md:hidden justify-between items-center">
+        <h1 class="text-2xl font-bold text-gradient-golden">
+          Chaaru's Foods
+        </h1>
+        <i class="fa-solid fa-bars text-2xl text-golden cursor-pointer px-2 hover:scale-110 transition-transform" onclick="toggleSidebar()" style="color: #DFBD69;"></i>
+      </div>
+
+      <div class="hidden md:flex justify-center items-center">
+        <ul class="flex space-x-6 items-center">
+          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Home</a></li>
+          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">About Us</a></li>
+          <li>
+            <h1 class="text-3xl font-bold text-gradient-golden hover:scale-105 px-10 duration-300 transition-all">
+              Chaaru's Foods
+            </h1>
+          </li>
+          <li class="relative dropdown">
+            <a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300 flex items-center gap-1" style="color: #DFBD69;">
+              Products
+              <i class="fa-solid fa-chevron-down text-sm"></i>
+            </a>
+            <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white dark:bg-zinc-700 rounded-xl shadow-2xl border-2  dark:border-zinc-600">
+              <ul class="py-2">
+                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-2xl border-2 mx-2" style="color: #DFBD69;">Cakes</a></li>
+                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-2xl border-2 mx-2 " style="color: #DFBD69;">Traditionals</a></li>
+                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-2xl border-2 mx-2" style="color: #DFBD69;">Diwali Faral</a></li>
+                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-2xl border-2 mx-2" style="color: #DFBD69;">Biryani</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="contactpage.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Contact</a></li>
+        </ul>
+      </div>
+      
+    </div>
+  </header>
+
+  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-pink-50 to-rose-100 shadow-2xl transform -translate-x-full transition-transform duration-300 z-40 md:hidden dark:from-zinc-800 dark:to-zinc-800">
+    <div class="flex justify-between items-center p-5 border-b border-rose-200 dark:border-zinc-700">
+      <h2 class="text-xl font-bold text-gradient-golden">Menu</h2>
+      <i class="fa-solid fa-times text-2xl text-golden cursor-pointer hover:scale-110 transition-transform" onclick="toggleSidebar()" style="color: #DFBD69;"></i>
+    </div>
+    <ul class="flex flex-col space-y-6 p-6">
+      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Home</a></li>
+      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">About Us</a></li>
+      <li>
+        <div class="text-lg text-golden font-semibold cursor-pointer flex items-center justify-between" onclick="toggleMobileDropdown()" style="color: #DFBD69;">
+          <span class="hover:opacity-80 transition-colors duration-300">Products</span>
+          <i id="mobile-arrow" class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </div>
+        <div id="mobile-products-dropdown" class="mobile-dropdown ml-4 mt-2">
+          <ul class="space-y-2">
+            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Cakes</a></li>
+            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Traditionals</a></li>
+            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Diwali Faral</a></li>
+            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Biryani</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Contact</a></li>
+    </ul>
+  </div>
+
+  <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden" onclick="toggleSidebar()"></div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('backdrop');
+      const body = document.body;
+      const isOpen = !sidebar.classList.contains('-translate-x-full');
+
+      if (isOpen) {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+        body.classList.remove('no-scroll');
+      } else {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+        body.classList.add('no-scroll');
+      }
+    }
+    
+    function toggleMobileDropdown() {
+      const dropdown = document.getElementById('mobile-products-dropdown');
+      const arrow = document.getElementById('mobile-arrow');
+      dropdown.classList.toggle('open');
+      arrow.classList.toggle('rotate-180');
+    }
+  </script>
+
+   <section class="dark:bg-zinc-900">
+    <div class="py-4">
+        <h2 class="flex justify-center text-5xl font-raleway text-golden font-raleway font-semibold"  style="color: #DFBD69;">Traditionals</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center px-4 py-4">     
+        <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/modak.png?updatedAt=1762526603793" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">        
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Modak</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\bhajaniChakali.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>
+        <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/puranpoli.png?updatedAt=1762528528706" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Puran Poli</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\besanLadoo.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>
+        <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/naralWadi.png?updatedAt=1762269408232" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Naral Wadi</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\wheatNankatai.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>  
+        <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/karanji.png?updatedAt=1762358612638" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Karanji</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\karanji.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>   
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center px-4 py-4">
+         <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/makaChivda.png?updatedAt=1762359159767" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Maka Chivda</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\makaChivda.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>
+        <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/wheatShankarpali.png?updatedAt=1762359481707" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Wheat Shankarpali</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\wheatShankarpali.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>
+        <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/khariShankarpali.png?updatedAt=1762444870524" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Khari Shankarpali</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\khariShankarpali.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>
+        <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/rawaLadoo.png?updatedAt=1762357783861" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Rawa Ladoo</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\rawaLadoo.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>   
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center px-4 py-4">
+         <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/pohaChivda.png?updatedAt=1762444666863" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Poha Chivda</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\pohaChivda.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>
+         <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/moongLadoo.png?updatedAt=1762445574971" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Moong Ladoo</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\moongLadoo.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>
+         <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/methiLadoo.png?updatedAt=1762359901084" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Methi Ladoo</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\methiLadoo.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>         
+         <div class="items-center">       
+            <img src="https://ik.imagekit.io/ChaarusFoods/dryFruitLadoo.png?updatedAt=1762360190159" class="w-full h-[340px] object-cover mb-4 rounded-2xl border-2"  style="border-color:#DFBD69">     
+            <h2 class="flex justify-center text-3xl font-raleway font-semibold text-golden"  style="color: #DFBD69;">Dry Fruit Ladoo</h2>       
+            <div class="flex justify-center py-3">       
+                <a href="diwaliFaralPages\dryFruitLadoo.html"><button class="items-center text-white font-semibold py-3 px-8 rounded hover:bg-pink-300  hover:scale-105 duration-300 transition-all" style="background-color: #DFBD69;">View More</button>       </a>
+            </div>     
+        </div>   
+    </div>
+  </section>
+
+  <!--Footer -->
+  <footer class="bg-gradient-to-br from-yellow-600 via-yellow-500 to-amber-600 dark:from-yellow-600 dark:via-yellow-500 dark:to-amber-600">
+    <div class="container mx-auto px-6 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div>
+          <h2 class="font-raleway text-3xl text-white font-bold mb-4 drop-shadow-lg">Chaaru's Foods</h2>
+          <div class="space-y-2">
+            <p class="font-raleway text-pink-50 dark:text-white font-semibold leading-relaxed">
+              B/004, Madhupushpa Arcade,<br>
+              Near Girijamata Mandir,<br>
+              Dombivali West - 421 202
+            </p>
+            <div class="mt-4 space-y-1">
+              <p class="font-manrope text-pink-50 dark:text-white font-semibold hover:text-white transition-colors">
+                <i class="fas fa-phone mr-2"></i>+91-8652530914
+              </p>
+              <p class="font-manrope text-pink-50 dark:text-white font-semibold hover:text-white transition-colors">
+                <i class="fas fa-phone mr-2"></i>+91-7045727768
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="font-raleway text-2xl text-white font-bold mb-4 drop-shadow-lg">Quick Links</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="chaarusFoods.html" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Home
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Products
+              </a>
+            </li>
+            <li>
+              <a href="contactpage.html" class="text-pink-50 dark:text-white font-raleway font-semibold hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">
+                <i class="fas fa-chevron-right mr-2 text-sm"></i>Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-raleway text-2xl text-white font-bold mb-4 drop-shadow-lg">Connect With Us</h3>
+          <div class="space-y-4">
+            <p class="text-pink-50 dark:text-white font-raleway font-semibold">
+              Follow us for updates and delicious recipes!
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
+                <i class="fab fa-youtube text-2xl"></i>
+              </a>
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
+                <i class="fab fa-instagram text-2xl"></i>
+              </a>
+              <a href="#" class="text-pink-50 dark:text-white hover:text-white hover:scale-125 transition-all duration-300 bg-white bg-opacity-20 p-3 rounded-full">
+                <i class="fab fa-whatsapp text-2xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="bg-gradient-to-br from-yellow-600 via-yellow-500 to-amber-600 dark:from-yellow-600 dark:via-yellow-500 dark:to-amber-600 bg-opacity-50 py-4">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-center items-center">
+          <p class="text-pink-50 dark:text-white font-raleway text-sm">
+            © 2025 Chaaru's Foods. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
