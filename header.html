@@ -119,16 +119,16 @@
       overflow: visible;
     }
 
-    .cake-image-container::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 30px;
-      background: radial-gradient(ellipse, rgba(236,72,153,0.3) 0%, transparent 70%);
-      filter: blur(15px);
+ /* FIXED: removed pink radial effect under image */
+    .cake-image-container {
+      position: relative;
+      overflow: visible;
+    }
+
+    /* Added a safe white background behind PNG to avoid color bleed */
+    .cake-image-container img {
+      background-color: #ffffff;
+      display: block;
     }
 
     @keyframes fadeInUp {
@@ -169,8 +169,8 @@
 
       <div class="hidden md:flex justify-center items-center">
         <ul class="flex space-x-6 items-center">
-          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Home</a></li>
-          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">About Us</a></li>
+          <li><a href="chaarusFoods.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Home</a></li>
+          <li><a href="aboutuspage.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">About Us</a></li>
           <li>
             <h1 class="text-3xl font-bold text-gradient-golden hover:scale-105 px-10 duration-300 transition-all">
               Chaaru's Foods
@@ -183,10 +183,10 @@
             </a>
             <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white dark:bg-zinc-700 rounded-xl shadow-2xl border-2  dark:border-zinc-600">
               <ul class="py-2">
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Cakes</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2 " style="color: #DFBD69;">Traditionals</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Diwali Faral</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Biryani</a></li>
+                <li><a href="products__cakes.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Cakes</a></li>
+                <li><a href="products__traditionals.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2 " style="color: #DFBD69;">Traditionals</a></li>
+                <li><a href="products__diwaliFaral.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Diwali Faral</a></li>
+                <li><a href="products__biryani.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Biryani</a></li>
               </ul>
             </div>
           </li>
