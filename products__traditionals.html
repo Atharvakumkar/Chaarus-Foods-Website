@@ -3,132 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Traditionals - Chaaru's Foods</title>
+  <title>Traditionals - Chaaru’s Foods</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
   <style>
     .font-manrope {
       font-family: 'Manrope', sans-serif;
     }
-    
+
     body.no-scroll {
       overflow: hidden;
     }
-    
+
     .dropdown-menu {
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
       transition: all 0.3s ease;
     }
-    
+
     .dropdown:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
-    
+
     .mobile-dropdown {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
     }
-    
+
     .mobile-dropdown.open {
       max-height: 200px;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .float-animation {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: -1000px 0; }
-      100% { background-position: 1000px 0; }
-    }
-
-    .shimmer {
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      background-size: 1000px 100%;
-      animation: shimmer 2s infinite;
-    }
-
-    .cake-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cake-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 70%);
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.1); opacity: 0.8; }
-    }
-
-    .price-badge {
-      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
-      box-shadow: 0 10px 30px rgba(236,72,153,0.4);
-      transition: all 0.3s ease;
-    }
-
-    .price-badge:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(236,72,153,0.6);
-    }
-
-    .text-gradient {
-      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .text-golden {
-      color: #DFBD69;
-    }
-
-    .bg-golden {
-      color: #DFBD69;
-    }
-
-    .text-gradient-golden {
-      background: linear-gradient(135deg, #DFBD69 0%, #C9A54F 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .cake-image-container {
-      position: relative;
-      overflow: visible;
-    }
-
-    .cake-image-container::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 30px;
-      background: radial-gradient(ellipse, rgba(236,72,153,0.3) 0%, transparent 70%);
-      filter: blur(15px);
     }
 
     @keyframes fadeInUp {
@@ -153,11 +63,38 @@
     .hover-lift:hover {
       transform: translateY(-10px);
     }
+
+    .text-golden {
+      color: #DFBD69;
+    }
+
+    .bg-golden {
+      background-color: #DFBD69;
+    }
+
+    .text-gradient-golden {
+      background: linear-gradient(135deg, #DFBD69 0%, #C9A54F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* FIXED: removed pink radial effect under image */
+    .cake-image-container {
+      position: relative;
+      overflow: visible;
+    }
+
+    /* Added a safe white background behind PNG to avoid color bleed */
+    .cake-image-container img {
+      background-color: #ffffff;
+      display: block;
+    }
   </style>
 </head>
 
 <body class="bg-gradient-to-br from-white via-white to-yellow-50 dark:bg-zinc-900 font-raleway">
-  <header class="sticky top-0 shadow-lg py-5 px-5 z-50 bg-white dark:bg-zinc-800 backdrop-blur-md">
+  <header class="sticky top-0 shadow-lg py-5 px-5 z-50 bg-white backdrop-blur-md dark:bg-zinc-900">
     <div class="container mx-auto">
       
       <div class="flex md:hidden justify-between items-center">
@@ -169,8 +106,8 @@
 
       <div class="hidden md:flex justify-center items-center">
         <ul class="flex space-x-6 items-center">
-          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Home</a></li>
-          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">About Us</a></li>
+          <li><a href="chaarusFoods.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Home</a></li>
+          <li><a href="aboutuspage.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">About Us</a></li>
           <li>
             <h1 class="text-3xl font-bold text-gradient-golden hover:scale-105 px-10 duration-300 transition-all">
               Chaaru's Foods
@@ -183,10 +120,10 @@
             </a>
             <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white dark:bg-zinc-700 rounded-xl shadow-2xl border-2  dark:border-zinc-600">
               <ul class="py-2">
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-2xl border-2 mx-2" style="color: #DFBD69;">Cakes</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-2xl border-2 mx-2 " style="color: #DFBD69;">Traditionals</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-2xl border-2 mx-2" style="color: #DFBD69;">Diwali Faral</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-2xl border-2 mx-2" style="color: #DFBD69;">Biryani</a></li>
+                <li><a href="products__cakes.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Cakes</a></li>
+                <li><a href="products__traditionals.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2 " style="color: #DFBD69;">Traditionals</a></li>
+                <li><a href="products__diwaliFaral.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Diwali Faral</a></li>
+                <li><a href="products__biryani.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Biryani</a></li>
               </ul>
             </div>
           </li>
@@ -203,8 +140,8 @@
       <i class="fa-solid fa-times text-2xl text-golden cursor-pointer hover:scale-110 transition-transform" onclick="toggleSidebar()" style="color: #DFBD69;"></i>
     </div>
     <ul class="flex flex-col space-y-6 p-6">
-      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Home</a></li>
-      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">About Us</a></li>
+      <li><a href="chaarusFoods.html" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Home</a></li>
+      <li><a href="aboutuspage.html" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">About Us</a></li>
       <li>
         <div class="text-lg text-golden font-semibold cursor-pointer flex items-center justify-between" onclick="toggleMobileDropdown()" style="color: #DFBD69;">
           <span class="hover:opacity-80 transition-colors duration-300">Products</span>
@@ -212,14 +149,14 @@
         </div>
         <div id="mobile-products-dropdown" class="mobile-dropdown ml-4 mt-2">
           <ul class="space-y-2">
-            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Cakes</a></li>
-            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Traditionals</a></li>
-            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Diwali Faral</a></li>
-            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Biryani</a></li>
+            <li><a href="products__cakes.html" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Cakes</a></li>
+            <li><a href="products__traditionals.html" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Traditionals</a></li>
+            <li><a href="products__diwaliFaral.html" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Diwali Faral</a></li>
+            <li><a href="products__biryani.html" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Biryani</a></li>
           </ul>
         </div>
       </li>
-      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Contact</a></li>
+      <li><a href="contactpage.html" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Contact</a></li>
     </ul>
   </div>
 

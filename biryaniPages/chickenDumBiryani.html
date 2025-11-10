@@ -94,17 +94,20 @@
 </head>
 
 <body class="bg-gradient-to-br from-white via-white to-yellow-50 dark:bg-zinc-900 font-raleway">
-  <header class="sticky top-0 shadow-lg py-5 px-5 z-50 bg-white dark:bg-zinc-800 backdrop-blur-md">
+  <header class="sticky top-0 shadow-lg py-5 px-5 z-50 bg-white backdrop-blur-md dark:bg-zinc-900">
     <div class="container mx-auto">
+      
       <div class="flex md:hidden justify-between items-center">
-        <h1 class="text-2xl font-bold text-gradient-golden">Chaaru's Foods</h1>
+        <h1 class="text-2xl font-bold text-gradient-golden">
+          Chaaru's Foods
+        </h1>
         <i class="fa-solid fa-bars text-2xl text-golden cursor-pointer px-2 hover:scale-110 transition-transform" onclick="toggleSidebar()" style="color: #DFBD69;"></i>
       </div>
 
       <div class="hidden md:flex justify-center items-center">
         <ul class="flex space-x-6 items-center">
-          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Home</a></li>
-          <li><a href="#" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">About Us</a></li>
+          <li><a href="../chaarusFoods.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Home</a></li>
+          <li><a href="../aboutuspage.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">About Us</a></li>
           <li>
             <h1 class="text-3xl font-bold text-gradient-golden hover:scale-105 px-10 duration-300 transition-all">
               Chaaru's Foods
@@ -115,29 +118,30 @@
               Products
               <i class="fa-solid fa-chevron-down text-sm"></i>
             </a>
-            <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white dark:bg-zinc-700 rounded-xl shadow-2xl border-2 dark:border-zinc-600">
+            <div class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white dark:bg-zinc-700 rounded-xl shadow-2xl border-2  dark:border-zinc-600">
               <ul class="py-2">
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Cakes</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Traditionals</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Diwali Faral</a></li>
-                <li><a href="#" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Biryani</a></li>
+                <li><a href="../products__cakes.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Cakes</a></li>
+                <li><a href="../products__traditionals.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2 " style="color: #DFBD69;">Traditionals</a></li>
+                <li><a href="../products__diwaliFaral.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Diwali Faral</a></li>
+                <li><a href="../products__biryani.html" class="block px-4 py-3 text-golden hover:scale-105 hover:font-bold transition-all duration-200 font-semibold rounded-lg mx-2" style="color: #DFBD69;">Biryani</a></li>
               </ul>
             </div>
           </li>
-          <li><a href="contactpage.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Contact</a></li>
+          <li><a href="../contactpage.html" class="font-semibold text-xl text-golden hover:opacity-80 hover:scale-110 transition-all duration-300" style="color: #DFBD69;">Contact</a></li>
         </ul>
       </div>
+      
     </div>
   </header>
 
-  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-yellow-50 to-yellow-100 shadow-2xl transform -translate-x-full transition-transform duration-300 z-40 md:hidden dark:from-zinc-800 dark:to-zinc-800">
-    <div class="flex justify-between items-center p-5 border-b border-yellow-200 dark:border-zinc-700">
+  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-pink-50 to-rose-100 shadow-2xl transform -translate-x-full transition-transform duration-300 z-40 md:hidden dark:from-zinc-800 dark:to-zinc-800">
+    <div class="flex justify-between items-center p-5 border-b border-rose-200 dark:border-zinc-700">
       <h2 class="text-xl font-bold text-gradient-golden">Menu</h2>
       <i class="fa-solid fa-times text-2xl text-golden cursor-pointer hover:scale-110 transition-transform" onclick="toggleSidebar()" style="color: #DFBD69;"></i>
     </div>
     <ul class="flex flex-col space-y-6 p-6">
-      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Home</a></li>
-      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">About Us</a></li>
+      <li><a href="../chaarusFoods.html" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Home</a></li>
+      <li><a href="../aboutuspage.html" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">About Us</a></li>
       <li>
         <div class="text-lg text-golden font-semibold cursor-pointer flex items-center justify-between" onclick="toggleMobileDropdown()" style="color: #DFBD69;">
           <span class="hover:opacity-80 transition-colors duration-300">Products</span>
@@ -145,14 +149,14 @@
         </div>
         <div id="mobile-products-dropdown" class="mobile-dropdown ml-4 mt-2">
           <ul class="space-y-2">
-            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Cakes</a></li>
-            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Traditionals</a></li>
-            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Diwali Faral</a></li>
-            <li><a href="#" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Biryani</a></li>
+            <li><a href="../products__cakes.html" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Cakes</a></li>
+            <li><a href="../products__traditionals.html" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Traditionals</a></li>
+            <li><a href="../products__diwaliFaral.html" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Diwali Faral</a></li>
+            <li><a href="../products__biryani.html" class="block text-base hover:opacity-80 transition-colors duration-300" style="color: #C9A54F;">Biryani</a></li>
           </ul>
         </div>
       </li>
-      <li><a href="#" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Contact</a></li>
+      <li><a href="../contactpage.html" class="text-lg text-golden font-semibold hover:opacity-80 transition-colors duration-300" style="color: #DFBD69;">Contact</a></li>
     </ul>
   </div>
 
@@ -175,7 +179,7 @@
         body.classList.add('no-scroll');
       }
     }
-
+    
     function toggleMobileDropdown() {
       const dropdown = document.getElementById('mobile-products-dropdown');
       const arrow = document.getElementById('mobile-arrow');
